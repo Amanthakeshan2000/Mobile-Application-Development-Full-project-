@@ -1,14 +1,17 @@
-name: mobile_application
+name: mad_project
 description: A new Flutter project.
 publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.0.5 <4.0.0'
+  sdk: '>=3.0.3 <4.0.0'
+
+  
 
 dependencies:
   flutter:
     sdk: flutter
+  hexcolor: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +20,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - Assets/verify2.png
