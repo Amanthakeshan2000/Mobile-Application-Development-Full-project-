@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:hexcolor/hexcolor.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   @override
@@ -22,7 +21,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
       // Simulate sending reset email
       // You can replace this with actual reset logic
-      _countdownTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
+      _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
         if (_timerValue > 0) {
           setState(() {
             _timerValue--;
@@ -54,8 +53,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         title: const Text('Forgot Password'),
         centerTitle: true,
       ),
-      body: 
-      Column(
+      body: Column(
         children: [
           Center(
             child: Padding(
@@ -63,115 +61,125 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               child: Image.asset("Assets/verify2.png"), // Replace with your image path
             ),
           ),
-
-      Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          const SizedBox(height: 16.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextFormField(
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter your email';
-                  }
-                  return null;
-                },
-                decoration: const InputDecoration(labelText: 'Email'),
-              ),
-              const SizedBox(height: 16.0),
-              const Center(
+              Container(
+                alignment: Alignment.center,
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                width: 30.0,
+                height: 30.0,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
                 child: Text(
-                  'Please enter your email address. We will send a mail to your email address to reset your password.',
+                  _timerValue >= 10 ? _timerValue.toString()[0] : '0',
+                  style: const TextStyle(fontSize: 16.0),
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                width: 30.0,
+                height: 30.0,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+                child: Text(
+                  _timerValue >= 10 ? _timerValue.toString()[1] : _timerValue.toString(),
+                  style: const TextStyle(fontSize: 16.0),
+                ),
+              ),
+              const SizedBox(width: 4.0),
+              const Text(
+                ':',
+                style: TextStyle(fontSize: 16.0),
+              ),
+              const SizedBox(width: 4.0),
+              Container(
+                alignment: Alignment.center,
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                width: 30.0,
+                height: 30.0,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+                child: const Text(
+                  '0',
                   style: TextStyle(fontSize: 16.0),
                 ),
               ),
-              const SizedBox(height: 16.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                    width: 30.0,
-                    height: 30.0,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: Text(
-                      _timerValue >= 10 ? _timerValue.toString()[0] : '0',
-                      style: const TextStyle(fontSize: 16.0),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                    width: 30.0,
-                    height: 30.0,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: Text(
-                      _timerValue >= 10 ? _timerValue.toString()[1] : _timerValue.toString(),
-                      style: const TextStyle(fontSize: 16.0),
-                    ),
-                  ),
-                  const SizedBox(width: 4.0),
-                  const Text(
-                    '.',
-                    style: TextStyle(fontSize: 16.0),
-                  ),
-                  const SizedBox(width: 4.0),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                    width: 30.0,
-                    height: 30.0,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: const Text(
-                      '0',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                    width: 30.0,
-                    height: 30.0,
-                    decoration: BoxDecoration(
-                      color: Colors.grey[300],
-                      borderRadius: BorderRadius.circular(4.0),
-                    ),
-                    child: const Text(
-                      '0',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-                  ),
-                ],
-              ),
-              
-              const SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: _isSendingEmail ? null : _sendResetEmail,
-                child: _isSendingEmail
-                    ? const CircularProgressIndicator()
-                    : const Text('Send'),
+              Container(
+                alignment: Alignment.center,
+                margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                width: 30.0,
+                height: 30.0,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+                child: const Text(
+                  '0',
+                  style: TextStyle(fontSize: 16.0),
+                ),
               ),
             ],
           ),
-        ),
-      ),
+          const SizedBox(height: 16.0),
+          Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Center(
+                  child: Text(
+                    'Please enter your email address.',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                ),
+                const Center(
+                  child: Text(
+                    'We will send a mail to your email address to',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                ),
+                const Center(
+                  child: Text(
+                    'reset your password.',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                ),
+                TextFormField(
+                  controller: _emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your email';
+                    }
+                    return null;
+                  },
+                  decoration: const InputDecoration(labelText: 'Email'),
+                ),
+                const SizedBox(height: 16.0),
+                ElevatedButton(
+                  onPressed: _isSendingEmail ? null : _sendResetEmail,
+                  child: _isSendingEmail
+                      ? const CircularProgressIndicator()
+                      : const Text('Send'),
+                ),
+              ],
+            ),
+          ),
         ],
-      
       ),
     );
   }
+}
+
+void main() {
+  runApp(MaterialApp(home: ForgotPasswordPage()));
 }
