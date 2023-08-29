@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:hexcolor/hexcolor.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 
       // Simulate sending reset email
       // You can replace this with actual reset logic
-      _countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      _countdownTimer = Timer.periodic(const Duration(seconds: 10), (timer) {
         if (_timerValue > 0) {
           setState(() {
             _timerValue--;
@@ -53,7 +54,17 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         title: const Text('Forgot Password'),
         centerTitle: true,
       ),
-      body: Padding(
+      body: 
+      Column(
+        children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Image.asset("Assets/verify2.png"), // Replace with your image path
+            ),
+          ),
+
+      Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
@@ -84,7 +95,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 children: [
                   Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 4.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
                     width: 30.0,
                     height: 30.0,
                     decoration: BoxDecoration(
@@ -93,12 +104,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     ),
                     child: Text(
                       _timerValue >= 10 ? _timerValue.toString()[0] : '0',
-                      style: TextStyle(fontSize: 16.0),
+                      style: const TextStyle(fontSize: 16.0),
                     ),
                   ),
                   Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 4.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
                     width: 30.0,
                     height: 30.0,
                     decoration: BoxDecoration(
@@ -107,32 +118,32 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                     ),
                     child: Text(
                       _timerValue >= 10 ? _timerValue.toString()[1] : _timerValue.toString(),
-                      style: TextStyle(fontSize: 16.0),
+                      style: const TextStyle(fontSize: 16.0),
                     ),
                   ),
                   const SizedBox(width: 4.0),
-                  Text(
+                  const Text(
                     '.',
                     style: TextStyle(fontSize: 16.0),
                   ),
                   const SizedBox(width: 4.0),
                   Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 4.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
                     width: 30.0,
                     height: 30.0,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(4.0),
                     ),
-                    child: Text(
+                    child: const Text(
                       '0',
                       style: TextStyle(fontSize: 16.0),
                     ),
                   ),
                   Container(
                     alignment: Alignment.center,
-                    margin: EdgeInsets.symmetric(horizontal: 4.0),
+                    margin: const EdgeInsets.symmetric(horizontal: 4.0),
                     width: 30.0,
                     height: 30.0,
                     decoration: BoxDecoration(
@@ -157,6 +168,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             ],
           ),
         ),
+      ),
+        ],
+      
       ),
     );
   }
