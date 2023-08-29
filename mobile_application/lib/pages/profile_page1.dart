@@ -18,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
               _buildButton("My certificates"),
               _buildButton("My badge"),
               _buildButton("Setting"),
-              _buildButton("LlSog out"),
+              _buildButton("Log out"),
             ],
           ),
         ),
