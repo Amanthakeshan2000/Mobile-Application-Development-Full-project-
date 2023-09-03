@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     OnboardingData(
       image: 'Assets/page4_image.png',
       title: 'homepage',
-      description: 'This is a the fourth onboarding page.',
+      description: 'This is a the fourth m page.',
     ),
   ];
 
