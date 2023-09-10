@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'reset_password_page.dart';
+import 'package:mobile_application/pages/reset_password_page.dart';
 
 void main() {
   runApp(MyApp());
