@@ -1,15 +1,44 @@
 import 'package:flutter/material.dart';
 
-class WelcomePage extends StatefulWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({Key? key});
 
   @override
-  _WelcomePageState createState() => _WelcomePageState();
+  Widget build(BuildContext context) {
+    double fem = 1.0; // Define your fem value or import it from somewhere else
+
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Background Image
+          Image(
+            image: AssetImage('assets/welcome.png'),
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+
+          // Centered Content
+          Center(
+            child: CirclesAnimation(fem: fem),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
-class _WelcomePageState extends State<WelcomePage>
+class CirclesAnimation extends StatefulWidget {
+  final double fem;
+
+  CirclesAnimation({required this.fem});
+
+  @override
+  _CirclesAnimationState createState() => _CirclesAnimationState();
+}
+
+class _CirclesAnimationState extends State<CirclesAnimation>
     with SingleTickerProviderStateMixin {
-  double fem = 1.0;
   late AnimationController _controller;
 
   @override
@@ -17,7 +46,7 @@ class _WelcomePageState extends State<WelcomePage>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: Duration(milliseconds: 1000), // Adjust the duration here
     )..repeat(reverse: true);
   }
 
@@ -29,146 +58,106 @@ class _WelcomePageState extends State<WelcomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
+    return Container(
+      width: 194 * widget.fem,
+      height: 194 * widget.fem,
+      decoration: BoxDecoration(
+        color: Color(0x8906ee6a),
+        borderRadius: BorderRadius.circular(97 * widget.fem),
+      ),
+      child: Stack(
         children: [
-          // Background Image
-          const Image(
-            image: AssetImage('assets/welcome.png'),
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
+          // First Circle
+          Positioned(
+            left: 15 * widget.fem,
+            top: 15 * widget.fem,
+            child: AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Opacity(
+                  opacity: _controller.value,
+                  child: child,
+                );
+              },
+              child: Container(
+                width: 164 * widget.fem,
+                height: 164 * widget.fem,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(82 * widget.fem),
+                  color: Color(0xff06ee6a),
+                ),
+              ),
+            ),
           ),
 
-          // Centered Content
-          Center(
-            child: AnimatedCircles(fem: fem, controller: _controller),
+          // Second Circle
+          Positioned(
+            left: 27 * widget.fem,
+            top: 27 * widget.fem,
+            child: AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Opacity(
+                  opacity: 1 - _controller.value, // Reverse opacity
+                  child: child,
+                );
+              },
+              child: Container(
+                width: 140 * widget.fem,
+                height: 140 * widget.fem,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(70 * widget.fem),
+                  color: Color(0xff049cec),
+                ),
+              ),
+            ),
+          ),
+
+          // Third Circle
+          Positioned(
+            left: 40 * widget.fem,
+            top: 40 * widget.fem,
+            child: AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Opacity(
+                  opacity: _controller.value,
+                  child: child,
+                );
+              },
+              child: Container(
+                width: 114 * widget.fem,
+                height: 114 * widget.fem,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(57 * widget.fem),
+                  color: Color(0xff001863),
+                ),
+              ),
+            ),
+          ),
+
+          // Fourth Circle (Centered)
+          Positioned(
+            left: 56 * widget.fem,
+            top: 56 * widget.fem,
+            child: Container(
+              width: 81 * widget.fem,
+              height: 81 * widget.fem,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(40.5 * widget.fem),
+                color: Color(0xff001863),
+              ),
+              child: Center(
+                child: Image.asset(
+                  'assets/Skillup.png', // Add your Skillup image asset
+                  width: 60 * widget.fem,
+                  height: 60 * widget.fem,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class AnimatedCircles extends StatelessWidget {
-  final double fem;
-  final AnimationController controller;
-
-  AnimatedCircles({required this.fem, required this.controller});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        width: 194 * fem,
-        height: 194 * fem,
-        decoration: BoxDecoration(
-          color: Color(0x8906ee6a),
-          borderRadius: BorderRadius.circular(97 * fem),
-        ),
-        child: Stack(
-          children: [
-            // First Circle
-            Positioned(
-              left: 15 * fem,
-              top: 15 * fem,
-              child: AnimatedBuilder(
-                animation: controller,
-                builder: (context, child) {
-                  return Transform.rotate(
-                    angle: controller.value * 2 * 3.141592653589793,
-                    child: child,
-                  );
-                },
-                child: Container(
-                  width: 164 * fem,
-                  height: 164 * fem,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(82 * fem),
-                    color: Color(0xff06ee6a),
-                  ),
-                ),
-              ),
-            ),
-
-            // Second Circle
-            Positioned(
-              left: 27 * fem,
-              top: 27 * fem,
-              child: AnimatedBuilder(
-                animation: controller,
-                builder: (context, child) {
-                  return Transform.rotate(
-                    angle: controller.value * 2 * 3.141592653589793,
-                    child: child,
-                  );
-                },
-                child: Container(
-                  width: 140 * fem,
-                  height: 140 * fem,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(70 * fem),
-                    color: Color(0xff049cec),
-                  ),
-                ),
-              ),
-            ),
-
-            // Third Circle
-            Positioned(
-              left: 40 * fem,
-              top: 40 * fem,
-              child: AnimatedBuilder(
-                animation: controller,
-                builder: (context, child) {
-                  return Transform.rotate(
-                    angle: controller.value * 2 * 3.141592653589793,
-                    child: child,
-                  );
-                },
-                child: Container(
-                  width: 114 * fem,
-                  height: 114 * fem,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(57 * fem),
-                    color: Color(0xff001863),
-                  ),
-                ),
-              ),
-            ),
-
-            // Fourth Circle (Centered)
-            Positioned(
-              left: 56 * fem,
-              top: 56 * fem,
-              child: AnimatedBuilder(
-                animation: controller,
-                builder: (context, child) {
-                  return Transform.rotate(
-                    angle: controller.value * 2 * 3.141592653589793,
-                    child: child,
-                  );
-                },
-                child: Container(
-                  width: 81 * fem,
-                  height: 81 * fem,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40.5 * fem),
-                    color: Color(0xff001863),
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      'assets/Skillup.png', // Add your Skillup image asset
-                      width: 40 * fem,
-                      height: 40 * fem,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
