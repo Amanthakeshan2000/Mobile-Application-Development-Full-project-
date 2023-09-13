@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'signup_page.dart';
+
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key});
 
@@ -7,11 +9,24 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     double fem = 1.0; // Define your fem value or import it from somewhere else
 
+    // Function to navigate to the sign-up page after a delay
+    Future<void> navigateToSignUpPage() async {
+      await Future.delayed(const Duration(seconds: 3)); // Wait for 20 seconds
+      // ignore: use_build_context_synchronously
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const SignUpPage()),
+      );
+    }
+
+    // Start the navigation when the widget is built
+    navigateToSignUpPage();
+
     return Scaffold(
       body: Stack(
         children: [
           // Background Image
-          Image(
+          const Image(
             image: AssetImage('assets/welcome.png'),
             fit: BoxFit.cover,
             width: double.infinity,
@@ -31,9 +46,10 @@ class WelcomePage extends StatelessWidget {
 class CirclesAnimation extends StatefulWidget {
   final double fem;
 
-  CirclesAnimation({required this.fem});
+  const CirclesAnimation({super.key, required this.fem});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CirclesAnimationState createState() => _CirclesAnimationState();
 }
 
