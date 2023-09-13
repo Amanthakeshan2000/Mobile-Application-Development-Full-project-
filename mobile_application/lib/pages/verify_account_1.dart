@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 
 class MyPage extends StatelessWidget {
@@ -96,7 +94,64 @@ class MyPage extends StatelessWidget {
                 ),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  Text(
+                    "Id Verification",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16.0,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          height: 150,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              // Implement logic to upload the front side of the identity card.
+                            },
+                            child: Text("Front Side"),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: SizedBox(
+                          height: 150,
+                          child: OutlinedButton(
+                            onPressed: () {
+                              // Implement logic to upload the back side of the identity card.
+                            },
+                            child: Text("Back Side"),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        padding: EdgeInsets.all(16),
+        child: SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            onPressed: () {
+              // Implement the verification logic here.
+            },
+            child: Text("Verify"),
+          ),
         ),
       ),
     );
