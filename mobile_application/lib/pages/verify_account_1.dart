@@ -275,9 +275,3 @@ class MyPage extends StatelessWidget {
     );
   }
 }
-
-void main() {
-  runApp(MaterialApp(
-    home: MyPage(),
-  ));
-}
