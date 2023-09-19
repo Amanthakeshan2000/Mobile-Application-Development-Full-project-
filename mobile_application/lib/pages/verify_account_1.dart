@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class MyPage extends StatelessWidget {
@@ -155,8 +157,10 @@ class MyPage extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Icon(
-                                      Icons.camera_alt_outlined,
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Icon(Icons.camera_alt_outlined,
+                                          size: 40.0),
                                     ),
                                     SizedBox(height: 10),
                                     Row(
@@ -216,13 +220,10 @@ class MyPage extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      "Back Side",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 14.0,
-                                        fontWeight: FontWeight.w400,
-                                      ),
+                                    Align(
+                                      alignment: Alignment.center,
+                                      child: Icon(Icons.camera_alt_outlined,
+                                          size: 40.0),
                                     ),
                                     SizedBox(height: 10),
                                     Row(
