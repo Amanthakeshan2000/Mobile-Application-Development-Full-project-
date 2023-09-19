@@ -7,8 +7,10 @@ environment:
   sdk: '>=3.0.5 <4.0.0'
 
 dependencies:
+  circle_nav_bar: ^2.0.1+1
   flutter:
     sdk: flutter
+  flutter_image_slideshow: ^0.1.6
 
 dev_dependencies:
   flutter_test:
@@ -17,5 +19,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+
+    - Assets/slideshow1.png
+    - Assets/second.png
+    - Assets/path1.png
+    - Assets/third.png
 
   
