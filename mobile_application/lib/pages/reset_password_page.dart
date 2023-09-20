@@ -40,7 +40,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
         backgroundColor: Colors.white10,
         elevation: 0,
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
