@@ -48,6 +48,13 @@ class signUP extends StatelessWidget {
                     hintText: 'Enter your email',
                     prefixIcon: Icon(Icons.email),
                   ),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value!.isEmpty || !value.contains('@')) {
+                      return 'Invalid email address';
+                    }
+                    return null;
+                  },
                 ),
               ],
             ),
