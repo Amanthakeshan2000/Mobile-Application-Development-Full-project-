@@ -20,7 +20,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       });
 
       // Simulate sending reset email
-      // You can replace this with actual reset logic
+      // can replace this with actual reset logic
       _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
         if (_timerValue > 0) {
           setState(() {
@@ -50,10 +50,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Forgot Password'),
+        backgroundColor: Colors.white, // Set background color to white
+        title: const Text(
+          'Forgot Password',
+          style: TextStyle(
+            color: Colors.black, // Set text color to black
+          ),
+        ),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -94,83 +100,30 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       ),
                     ),
                     const SizedBox(height: 16.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                          width: 30.0,
-                          height: 30.0,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: Text(
-                            _timerValue >= 10 ? _timerValue.toString()[0] : '0',
-                            style: const TextStyle(fontSize: 16.0),
-                          ),
+                    Container(
+                      padding: const EdgeInsets.all(8.0), // Adjust padding as needed
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.grey, // Border color
+                          width: 1.0,         // Border width
                         ),
-                        Container(
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                          width: 30.0,
-                          height: 30.0,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: Text(
-                            _timerValue >= 10 ? _timerValue.toString()[1] : _timerValue.toString(),
-                            style: const TextStyle(fontSize: 16.0),
-                          ),
+                        borderRadius: BorderRadius.circular(4.0), // Adjust the border radius
+                      ),
+                      child: TextFormField(
+                        controller: _emailController,
+                        keyboardType: TextInputType.emailAddress,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your email';
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          hintText: 'Enter your email',
+                          border: InputBorder.none, // Remove the default input border
+                          icon: Icon(Icons.email),
                         ),
-                        const SizedBox(width: 4.0),
-                        const Text(
-                          ':',
-                          style: TextStyle(fontSize: 16.0),
-                        ),
-                        const SizedBox(width: 4.0),
-                        Container(
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                          width: 30.0,
-                          height: 30.0,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: const Text(
-                            '0',
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
-                          width: 30.0,
-                          height: 30.0,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(4.0),
-                          ),
-                          child: const Text(
-                            '0',
-                            style: TextStyle(fontSize: 16.0),
-                          ),
-                        ),
-                      ],
-                    ),
-                    TextFormField(
-                      controller: _emailController,
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        return null;
-                      },
-                      decoration: const InputDecoration(labelText: 'Email'),
+                      ),
                     ),
                     const SizedBox(height: 16.0),
                   ],
@@ -185,7 +138,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             child: ElevatedButton(
               onPressed: _isSendingEmail ? null : _sendResetEmail,
               style: ElevatedButton.styleFrom(
-            
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
               ),
               child: _isSendingEmail
