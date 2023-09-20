@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 class signUP extends StatelessWidget {
   const signUP({super.key});
 
+  get obscureText => null;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -69,6 +71,34 @@ class signUP extends StatelessWidget {
                       },
                     ),
                   ),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value!.isEmpty || value.length < 8) {
+                      return 'Password must be at least 8 characters';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: 10),
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Re-enter Password',
+                    hintText: 'Re-enter your password',
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.visibility),
+                      onPressed: () {
+                        // Toggle password visibility
+                      },
+                    ),
+                  ),
+                  obscureText: true,
+                  validator: (value) {
+                    if (value!.isEmpty || value.length < 8) {
+                      return 'Password must be at least 8 characters';
+                    }
+                    return null;
+                  },
                 ),
               ],
             ),
