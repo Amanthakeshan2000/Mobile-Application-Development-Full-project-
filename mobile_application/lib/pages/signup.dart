@@ -100,6 +100,13 @@ class signUP extends StatelessWidget {
                     return null;
                   },
                 ),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle sign-up logic
+                  },
+                  child: Text('Sign Up'),
+                ),
               ],
             ),
           ),
