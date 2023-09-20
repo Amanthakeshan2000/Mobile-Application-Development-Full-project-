@@ -1,10 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+void main() {
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => UserProfileProvider(),
+      child: const MyApp(),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: ProfileScreen(),
+    );
+  }
+}
+
+class UserProfileProvider with ChangeNotifier {
+  String userName = "Kaveesha Madhushani";
+  String profileImageUrl = "your_default_profile_image_url_here";
+
+  void updateProfile(String name, String imageUrl) {
+    userName = name;
+    profileImageUrl = imageUrl;
+    notifyListeners();
+  }
+}
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final userProfile = Provider.of<UserProfileProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -26,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildProfileInfo(),
+              _buildProfileInfo(userProfile),
               const SizedBox(height: 20),
               _buildButton("Edit profile"),
               _buildButton("Verify account"),
@@ -42,21 +76,18 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileInfo() {
-    const String userName = "John Doe";
-    const String profileImageUrl = "your_profile_image_url_here";
-
-    return const Row(
+  Widget _buildProfileInfo(UserProfileProvider userProfile) {
+    return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         CircleAvatar(
-          backgroundImage: NetworkImage(profileImageUrl),
+          backgroundImage: NetworkImage(userProfile.profileImageUrl),
           radius: 30,
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Text(
-          userName,
-          style: TextStyle(
+          userProfile.userName,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -74,7 +105,8 @@ class ProfileScreen extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: const Color.fromARGB(255, 235, 229, 229),
           alignment: Alignment.centerLeft,
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16), // Adjust padding here
+          padding: const EdgeInsets.symmetric(
+              vertical: 8, horizontal: 16), // Adjust padding here
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,5 +125,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-
