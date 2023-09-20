@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px; /* Padding inside the container */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 0 20px; /* Margin for both left and right sides (adjust as needed) */
+        }
+
+        .login-heading {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-top: 20px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .login-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .social-buttons {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-heading">
+            <h1>Login</h1>
+            <p>Enter your credentials below:</p>
+        </div>
+        <form>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email address" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Confirm Password" required>
+            </div>
+            <div class="form-group remember-me">
+                <input type="checkbox" id="rememberMe"> <label for="rememberMe">Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block login-button">Login</button>
+        </form>
+        <div class="social-buttons">
+            <button class="btn btn-primary">Login with Google</button>
+            <button class="btn btn-primary">Continue with Facebook</button>
+        </div>
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+    </div>
+</body>
+</html>
