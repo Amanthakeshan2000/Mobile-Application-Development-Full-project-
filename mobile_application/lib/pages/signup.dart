@@ -56,6 +56,20 @@ class signUP extends StatelessWidget {
                     return null;
                   },
                 ),
+                SizedBox(height: 10),
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    hintText: 'Enter your password',
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.visibility),
+                      onPressed: () {
+                        // Toggle password visibility
+                      },
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
