@@ -59,7 +59,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back_ios,
+          
+            color: Colors.black, // Set text color to black
+          ),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -100,6 +103,75 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       ),
                     ),
                     const SizedBox(height: 16.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          child: Text(
+                            _timerValue >= 10 ? _timerValue.toString()[0] : '0',
+                            style: const TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          child: Text(
+                            _timerValue >= 10 ? _timerValue.toString()[1] : _timerValue.toString(),
+                            style: const TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                        const SizedBox(width: 4.0),
+                        const Text(
+                          ':',
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                        const SizedBox(width: 4.0),
+                        Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          child: const Text(
+                            '0',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          margin: const EdgeInsets.symmetric(horizontal: 4.0),
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(4.0),
+                          ),
+                          child: const Text(
+                            '0',
+                            style: TextStyle(fontSize: 16.0),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0), // Add space here
                     Container(
                       padding: const EdgeInsets.all(8.0), // Adjust padding as needed
                       decoration: BoxDecoration(
