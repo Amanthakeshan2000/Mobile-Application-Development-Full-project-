@@ -62,8 +62,8 @@ class _MyCourse2State extends State<MyCourse2> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.all(16.0),
-              padding: const EdgeInsets.all(16.0),
+              margin: const EdgeInsets.all(7.0),
+              padding: const EdgeInsets.all(0.0),
               decoration: BoxDecoration(
                 color: Colors.grey[300], // Set the ash color here
                 borderRadius: BorderRadius.circular(12.0), // Set border radius
@@ -175,7 +175,7 @@ class _MyCourse2State extends State<MyCourse2> {
       title: Row(
         children: [
           Text(answerText),
-          SizedBox(width: 10), // Add some spacing between text and icon
+          SizedBox(width: 1), // Add some spacing between text and icon
           if (hasSubmitted && isSelected)
             Icon(
               isCorrect ? Icons.check_circle : Icons.cancel, // Display correct or incorrect icon
