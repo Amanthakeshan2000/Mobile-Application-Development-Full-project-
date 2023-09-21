@@ -1,15 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => UserProfileProvider(),
-      child: const MyApp(),
-    ),
-  );
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -53,25 +44,43 @@ class ProfileScreen extends StatelessWidget {
           },
         ),
       ),
-      body: Container(
-        color: Colors.white,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildProfileInfo(userProfile),
-              const SizedBox(height: 20),
-              _buildButton("Edit profile"),
-              _buildButton("Verify account"),
-              _buildButton("My courses"),
-              _buildButton("My certificates"),
-              _buildButton("My badge"),
-              _buildButton("Setting"),
-              _buildButton("Log out"),
-            ],
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildProfileInfo(userProfile),
+                const SizedBox(height: 20),
+                _buildButton("Edit profile"),
+                _buildButton("Verify account"),
+                _buildButton("My courses"),
+                _buildButton("My certificates"),
+                _buildButton("My badge"),
+                _buildButton("Setting"),
+                _buildButton("Log out"),
+              ],
+            ),
           ),
-        ),
+          const Expanded(
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 20),
+                child: Text(
+                  'SkillUp at NSBM',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(255, 148, 142, 142),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -88,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
         Text(
           userProfile.userName,
           style: const TextStyle(
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
@@ -103,10 +112,10 @@ class ProfileScreen extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(255, 235, 229, 229),
+          backgroundColor: Color.fromARGB(233, 245, 247, 243),
           alignment: Alignment.centerLeft,
           padding: const EdgeInsets.symmetric(
-              vertical: 8, horizontal: 16), // Adjust padding here
+              vertical: 10, horizontal: 16), // Adjust padding here
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -114,14 +123,18 @@ class ProfileScreen extends StatelessWidget {
             Text(
               buttonText,
               style: const TextStyle(
+                fontSize: 17,
+            fontWeight: FontWeight.w400,
                 color: Colors.black,
               ),
             ),
             const Icon(Icons.arrow_forward_ios,
-                color: Color.fromARGB(255, 155, 150, 150)),
+                color: Color.fromARGB(255, 148, 143, 143)),
           ],
         ),
       ),
     );
   }
 }
+
+
