@@ -69,18 +69,17 @@ class _MyPageState extends State<MyPage> {
               children: [
                 CircleAvatar(
                   radius: 90,
-                  backgroundImage: AssetImage(
-                      "assets/profile_photo.jpg"), // Replace with your profile image
+                  backgroundImage:
+                      AssetImage("assets/profile_photo.jpg"), // profile image
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: IconButton(
                       icon: Icon(
-                        Icons
-                            .edit, // You can change this to the desired editing icon
-                        color: Colors.black, // You can change the icon color
+                        Icons.edit,
+                        color: Colors.black, //  icon color
                       ),
                       onPressed: () {
-                        // Handle the edit action here
+                        //   action
                       },
                     ),
                   ),
@@ -105,7 +104,7 @@ class _MyPageState extends State<MyPage> {
                 children: [
                   TextField(
                     decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person), // Add people icon here
+                      prefixIcon: Icon(Icons.person), // people icon
                       labelText: 'First Name',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -168,7 +167,7 @@ class _MyPageState extends State<MyPage> {
           height: 50,
           child: ElevatedButton(
             onPressed: () {
-              // Implement the verification logic here.
+              //  verification logic
             },
             child: Text("Continue"),
           ),
