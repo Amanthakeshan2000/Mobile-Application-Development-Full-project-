@@ -8,7 +8,7 @@ class MyPage extends StatefulWidget {
 }
 
 class _MyPageState extends State<MyPage> {
-  String selectedCountryCode = "+1"; // Default country code
+  String selectedCountryCode = "+94"; // Default country code
   TextEditingController mobileNumberController = TextEditingController();
 
   @override
