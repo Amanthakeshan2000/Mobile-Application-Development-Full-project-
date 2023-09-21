@@ -32,7 +32,57 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
     });
   }
 
-
+void _showResetSuccessDialog() {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Center(
+        child: Container(
+          height: 441, // 
+          width: 400, // Width
+          child: AlertDialog(
+            title: Text(
+              'Successful',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color.fromRGBO(1, 198, 43, 1),
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            content: Column(
+              mainAxisSize: MainAxisSize.min, // Allow the dialog to shrink to fit its content
+              children: [
+                Image.asset(
+                  'assets/tick2.jpeg', 
+                  width: 180, //width
+                  height: 150, //height
+                ),
+                SizedBox(height: 16.0),
+                Text('Your password is successfully changed!',
+                textAlign: TextAlign.center,),
+              ],
+            ),
+            actions: <Widget>[
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(325, 50),  
+                ),
+                child: Text(
+                  'Back to Home',
+                  style: TextStyle(fontSize: 20),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
 
   @override
   Widget build(BuildContext context) {
