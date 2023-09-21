@@ -16,11 +16,12 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
       _isResetting = true;
     });
 
-    //password reset process
+    // Simulate password reset process
     Future.delayed(Duration(seconds: 2), () {
       setState(() {
         _isResetting = false;
-        // Show a success message
+        // Show a success message using a dialog
+        _showResetSuccessDialog();
       });
     });
   }
@@ -32,7 +33,7 @@ class _PasswordResetPageState extends State<PasswordResetPage> {
     });
   }
 
-void _showResetSuccessDialog() {
+ void _showResetSuccessDialog() {
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -88,7 +89,10 @@ void _showResetSuccessDialog() {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Reset Password', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+        title: Text(
+          'Reset Password',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.white10,
         elevation: 0,
       ),
@@ -99,9 +103,12 @@ void _showResetSuccessDialog() {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/resetpassword1.png',fit: BoxFit.cover, height: 250),
+              Image.asset('assets/resetpassword1.png',
+                  fit: BoxFit.cover, height: 250),
               SizedBox(height: 16.0),
-              Text('Use at least 8 characters strong password', textAlign: TextAlign.center ,style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+              Text('Use at least 8 characters strong password',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               SizedBox(height: 16.0),
               Text('skillupnsbm@nsbm.ac.lk', style: TextStyle(fontSize: 15)),
               SizedBox(height: 16.0),
@@ -113,15 +120,14 @@ void _showResetSuccessDialog() {
                   ),
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                 child: TextField(
-                   controller: _newPasswordController,
+                child: TextField(
+                  controller: _newPasswordController,
                   obscureText: true,
-                   decoration: InputDecoration(
-                     labelText: '     Enter new Password',
-                     border: InputBorder.none,
-                   ),
-                 ),
-
+                  decoration: InputDecoration(
+                    labelText: '     Enter new Password',
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
               SizedBox(height: 16.0),
               Container(
@@ -137,9 +143,8 @@ void _showResetSuccessDialog() {
                   obscureText: true,
                   onChanged: (value) => _validatePasswords(),
                   decoration: InputDecoration(
-                    labelText: '     Re enter password',
-                    errorText:
-                        _passwordsMatch ? null : 'Passwords do not match',
+                    labelText: '     Re-enter password',
+                    errorText: _passwordsMatch ? null : 'Passwords do not match',
                     border: InputBorder.none,
                   ),
                 ),
@@ -162,4 +167,3 @@ void _showResetSuccessDialog() {
     );
   }
 }
-
