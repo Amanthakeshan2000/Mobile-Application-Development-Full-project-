@@ -21,3 +21,4 @@ flutter:
   uses-material-design: true
   assets:
     - Assets/signup.png
+    - Assets/Msignin.png
