@@ -111,7 +111,7 @@ class _MyCourse2State extends State<MyCourse2> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: const Color.fromARGB(255, 165, 152, 151),
-                      minimumSize: const Size(120, 40),
+                      minimumSize: const Size(120, 43), // Increased button height by 3 pixels
                     ),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0),
@@ -131,11 +131,11 @@ class _MyCourse2State extends State<MyCourse2> {
                           showCertificateButton = true; // Show Get Certificate button
                         });
                       } else {
-                        showSubmitAlert();
+                        showSelectAnswerAlert(); // Show alert if no answer is selected
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(120, 40),
+                      minimumSize: const Size(120, 43), // Increased button height by 3 pixels
                     ),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0),
@@ -151,8 +151,8 @@ class _MyCourse2State extends State<MyCourse2> {
                       // Handle the logic for getting the certificate here
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: const Color.fromARGB(255, 86, 51, 241), // Customize button color
-                      minimumSize: const Size(200, 40), // Set button size
+                      primary: Color.fromARGB(255, 51, 133, 241), // Customize button color
+                      minimumSize: const Size(200, 43), // Increased button height by 3 pixels
                     ),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0),
@@ -251,6 +251,26 @@ class _MyCourse2State extends State<MyCourse2> {
         return AlertDialog(
           title: const Text("Alert"),
           content: const Text("Please submit the answer first."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void showSelectAnswerAlert() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Alert"),
+          content: const Text("Please select an answer before submitting."),
           actions: [
             TextButton(
               onPressed: () {
