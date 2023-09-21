@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MyPage extends StatelessWidget {
   @override
@@ -115,7 +116,7 @@ class MyPage extends StatelessWidget {
                     margin: EdgeInsets.fromLTRB(0, 0, 1, 14),
                     constraints: BoxConstraints(maxWidth: 280),
                     child: Text(
-                      "Your ID verification will helps us to identify who you are",
+                      "Your ID verification will help us to identify who you are",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
@@ -149,8 +150,13 @@ class MyPage extends StatelessWidget {
                             height: 135,
                             width: 350,
                             child: OutlinedButton(
-                              onPressed: () {
-                                // Implement logic to upload the front side of the identity card.
+                              onPressed: () async {
+                                final XFile? image = await ImagePicker()
+                                    .pickImage(source: ImageSource.camera);
+                                if (image != null) {
+                                  // You can now do something with the captured image, such as displaying it or uploading it.
+                                  // The 'image' variable contains the path to the captured image.
+                                }
                               },
                               child: SizedBox.expand(
                                 child: Column(
@@ -212,8 +218,13 @@ class MyPage extends StatelessWidget {
                             height: 135,
                             width: 350,
                             child: OutlinedButton(
-                              onPressed: () {
-                                // Implement logic to upload the back side of the identity card.
+                              onPressed: () async {
+                                final XFile? image = await ImagePicker()
+                                    .pickImage(source: ImageSource.camera);
+                                if (image != null) {
+                                  // You can now do something with the captured image, such as displaying it or uploading it.
+                                  // The 'image' variable contains the path to the captured image.
+                                }
                               },
                               child: SizedBox.expand(
                                 child: Column(
