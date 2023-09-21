@@ -68,7 +68,7 @@ class MyPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: SizedBox(
                       height: 44,
-                      width: screenWidth * 0.45, // Adjust width as needed
+                      width: screenWidth * 0.45, // width
                       child: TextField(
                         decoration: InputDecoration(
                           labelText: "Student ID",
@@ -85,7 +85,7 @@ class MyPage extends StatelessWidget {
                     padding: const EdgeInsets.all(16.0),
                     child: SizedBox(
                       height: 44,
-                      width: screenWidth * 0.45, // Adjust width as needed
+                      width: screenWidth * 0.45, // width
                       child: TextField(
                         decoration: InputDecoration(
                           labelText: "Batch",
@@ -154,8 +154,7 @@ class MyPage extends StatelessWidget {
                                 final XFile? image = await ImagePicker()
                                     .pickImage(source: ImageSource.camera);
                                 if (image != null) {
-                                  // You can now do something with the captured image, such as displaying it or uploading it.
-                                  // The 'image' variable contains the path to the captured image.
+                                  //image
                                 }
                               },
                               child: SizedBox.expand(
@@ -222,8 +221,7 @@ class MyPage extends StatelessWidget {
                                 final XFile? image = await ImagePicker()
                                     .pickImage(source: ImageSource.camera);
                                 if (image != null) {
-                                  // You can now do something with the captured image, such as displaying it or uploading it.
-                                  // The 'image' variable contains the path to the captured image.
+                                  //image
                                 }
                               },
                               child: SizedBox.expand(
@@ -277,7 +275,7 @@ class MyPage extends StatelessWidget {
           height: 50,
           child: ElevatedButton(
             onPressed: () {
-              // Implement the verification logic here.
+              //  verification logic
             },
             child: Text("Verify"),
           ),
