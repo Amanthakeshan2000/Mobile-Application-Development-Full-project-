@@ -25,8 +25,31 @@ class MyCourse2 extends StatelessWidget {
           },
         ),
       ),
-      body: const Center(
-        child: Text('Your course content goes here'), // Replace with your content
+      body: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'Lesson 3 | Quiz',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+              ),
+            ),
+          ),
+          
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'Question 01',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20.0, // Increase the font size
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
