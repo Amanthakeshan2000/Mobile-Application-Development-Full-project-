@@ -19,5 +19,5 @@ flutter:
   uses-material-design: true
   
   assets:
-    - assets/welcome.png
-    - assets/Skillup.png
+    - assets/image1.jpg
+    - assets/image2.png
