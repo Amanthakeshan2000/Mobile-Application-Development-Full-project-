@@ -10,7 +10,8 @@ class MyCourse2 extends StatefulWidget {
 class _MyCourse2State extends State<MyCourse2> {
   int? selectedAnswer;
   bool hasSubmitted = false;
-  bool showCertificateButton = false; // Track if the "Get Certificate" button should be shown
+  bool showCertificateButton =
+      false; // Track if the "Get Certificate" button should be shown
 
   // Correct answer
   final int correctAnswer = 3; // 'c. System.out.println("Hello World");'
@@ -62,8 +63,8 @@ class _MyCourse2State extends State<MyCourse2> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.all(7.0),
-              padding: const EdgeInsets.all(0.0),
+              margin: const EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(3.0),
               decoration: BoxDecoration(
                 color: Colors.grey[300], // Set the ash color here
                 borderRadius: BorderRadius.circular(12.0), // Set border radius
@@ -111,7 +112,8 @@ class _MyCourse2State extends State<MyCourse2> {
                     },
                     style: ElevatedButton.styleFrom(
                       primary: const Color.fromARGB(255, 165, 152, 151),
-                      minimumSize: const Size(120, 43), // Increased button height by 3 pixels
+                      minimumSize: const Size(
+                          120, 43), // Increased button height by 3 pixels
                     ),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0),
@@ -128,14 +130,16 @@ class _MyCourse2State extends State<MyCourse2> {
                       if (selectedAnswer != null) {
                         setState(() {
                           hasSubmitted = true;
-                          showCertificateButton = true; // Show Get Certificate button
+                          showCertificateButton =
+                              true; // Show Get Certificate button
                         });
                       } else {
                         showSelectAnswerAlert(); // Show alert if no answer is selected
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(120, 43), // Increased button height by 3 pixels
+                      minimumSize: const Size(
+                          120, 43), // Increased button height by 3 pixels
                     ),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0),
@@ -151,12 +155,15 @@ class _MyCourse2State extends State<MyCourse2> {
                       // Handle the logic for getting the certificate here
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: Color.fromARGB(255, 51, 133, 241), // Customize button color
-                      minimumSize: const Size(200, 43), // Increased button height by 3 pixels
+                      primary: Color.fromARGB(
+                          255, 51, 133, 241), // Customize button color
+                      minimumSize: const Size(
+                          200, 43), // Increased button height by 3 pixels
                     ),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Text("Get Certificate", style: TextStyle(fontSize: 16.0)),
+                      child: Text("Get Certificate",
+                          style: TextStyle(fontSize: 16.0)),
                     ),
                   ),
                 ),
@@ -178,7 +185,9 @@ class _MyCourse2State extends State<MyCourse2> {
           SizedBox(width: 1), // Add some spacing between text and icon
           if (hasSubmitted && isSelected)
             Icon(
-              isCorrect ? Icons.check_circle : Icons.cancel, // Display correct or incorrect icon
+              isCorrect
+                  ? Icons.check_circle
+                  : Icons.cancel, // Display correct or incorrect icon
               color: isCorrect ? Colors.green : Colors.red, // Set icon color
             ),
         ],
@@ -186,11 +195,13 @@ class _MyCourse2State extends State<MyCourse2> {
       leading: Radio<int>(
         value: value,
         groupValue: selectedAnswer,
-        onChanged: hasSubmitted ? null : (int? newValue) {
-          setState(() {
-            selectedAnswer = newValue;
-          });
-        },
+        onChanged: hasSubmitted
+            ? null
+            : (int? newValue) {
+                setState(() {
+                  selectedAnswer = newValue;
+                });
+              },
       ),
       tileColor: isSelected ? const Color.fromARGB(255, 235, 232, 232) : null,
       selectedTileColor: Colors.black,
