@@ -10,6 +10,7 @@ class MyCourse2 extends StatefulWidget {
 class _MyCourse2State extends State<MyCourse2> {
   int? selectedAnswer;
   bool hasSubmitted = false;
+  bool showCertificateButton = false; // Track if the "Get Certificate" button should be shown
 
   // Create a list to track the expansion panel state
   List<bool> isPanelExpanded = [false, false, false];
@@ -95,47 +96,67 @@ class _MyCourse2State extends State<MyCourse2> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                margin: const EdgeInsets.only(right: 5.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Clear button action
-                    setState(() {
-                      selectedAnswer = null;
-                    });
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: const Color.fromARGB(255, 165, 152, 151),
-                    minimumSize: const Size(120, 40),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Text("Clear", style: TextStyle(fontSize: 16.0)),
-                  ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 5.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Submit button action
-                    if (selectedAnswer != null) {
+              if (!hasSubmitted) // Show Clear and Submit buttons only if not submitted
+                Container(
+                  margin: const EdgeInsets.only(right: 5.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Clear button action
                       setState(() {
-                        hasSubmitted = true;
+                        selectedAnswer = null;
                       });
-                    } else {
-                      showSubmitAlert();
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(120, 40),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12.0),
-                    child: Text("Submit", style: TextStyle(fontSize: 16.0)),
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: const Color.fromARGB(255, 165, 152, 151),
+                      minimumSize: const Size(120, 40),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text("Clear", style: TextStyle(fontSize: 16.0)),
+                    ),
                   ),
                 ),
-              ),
+              if (!hasSubmitted)
+                Container(
+                  margin: const EdgeInsets.only(left: 5.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Submit button action
+                      if (selectedAnswer != null) {
+                        setState(() {
+                          hasSubmitted = true;
+                          showCertificateButton = true; // Show Get Certificate button
+                        });
+                      } else {
+                        showSubmitAlert();
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(120, 40),
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text("Submit", style: TextStyle(fontSize: 16.0)),
+                    ),
+                  ),
+                ),
+              if (showCertificateButton) // Show Get Certificate button after submission
+                Container(
+                  margin: const EdgeInsets.only(left: 5.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // Handle the logic for getting the certificate here
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: const Color.fromARGB(255, 86, 51, 241), // Customize button color
+                      minimumSize: const Size(200, 40), // Set button size
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 12.0),
+                      child: Text("Get Certificate", style: TextStyle(fontSize: 16.0)),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
@@ -149,7 +170,7 @@ class _MyCourse2State extends State<MyCourse2> {
       leading: Radio<int>(
         value: value,
         groupValue: selectedAnswer,
-        onChanged: (int? newValue) {
+        onChanged: hasSubmitted ? null : (int? newValue) {
           setState(() {
             selectedAnswer = newValue;
           });
