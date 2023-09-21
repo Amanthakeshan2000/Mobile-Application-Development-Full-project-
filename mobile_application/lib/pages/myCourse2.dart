@@ -9,6 +9,7 @@ class MyCourse2 extends StatefulWidget {
 
 class _MyCourse2State extends State<MyCourse2> {
   int? selectedAnswer;
+  bool hasSubmitted = false;
 
   // Create a list to track the expansion panel state
   List<bool> isPanelExpanded = [false, false, false];
@@ -119,7 +120,11 @@ class _MyCourse2State extends State<MyCourse2> {
                   onPressed: () {
                     // Submit button action
                     if (selectedAnswer != null) {
-                      // Handle the submission logic here
+                      setState(() {
+                        hasSubmitted = true;
+                      });
+                    } else {
+                      showSubmitAlert();
                     }
                   },
                   style: ElevatedButton.styleFrom(
@@ -177,9 +182,13 @@ class _MyCourse2State extends State<MyCourse2> {
                   ? const Icon(Icons.arrow_drop_up)
                   : const Icon(Icons.arrow_drop_down),
               onPressed: () {
-                setState(() {
-                  isPanelExpanded[index] = !isPanelExpanded[index];
-                });
+                if (!hasSubmitted) {
+                  showSubmitAlert();
+                } else {
+                  setState(() {
+                    isPanelExpanded[index] = !isPanelExpanded[index];
+                  });
+                }
               },
             ),
           ),
@@ -195,6 +204,26 @@ class _MyCourse2State extends State<MyCourse2> {
             ),
         ],
       ),
+    );
+  }
+
+  void showSubmitAlert() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Alert"),
+          content: const Text("Please submit the answer first."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
     );
   }
 }
