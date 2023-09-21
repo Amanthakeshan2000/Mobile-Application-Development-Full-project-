@@ -12,6 +12,9 @@ class _MyCourse2State extends State<MyCourse2> {
   bool hasSubmitted = false;
   bool showCertificateButton = false; // Track if the "Get Certificate" button should be shown
 
+  // Correct answer
+  final int correctAnswer = 3; // 'c. System.out.println("Hello World");'
+
   // Create a list to track the expansion panel state
   List<bool> isPanelExpanded = [false, false, false];
 
@@ -165,8 +168,21 @@ class _MyCourse2State extends State<MyCourse2> {
   }
 
   Widget buildAnswerTile(String answerText, int value) {
+    bool isCorrect = value == correctAnswer;
+    bool isSelected = selectedAnswer == value;
+
     return ListTile(
-      title: Text(answerText),
+      title: Row(
+        children: [
+          Text(answerText),
+          SizedBox(width: 10), // Add some spacing between text and icon
+          if (hasSubmitted && isSelected)
+            Icon(
+              isCorrect ? Icons.check_circle : Icons.cancel, // Display correct or incorrect icon
+              color: isCorrect ? Colors.green : Colors.red, // Set icon color
+            ),
+        ],
+      ),
       leading: Radio<int>(
         value: value,
         groupValue: selectedAnswer,
@@ -176,7 +192,7 @@ class _MyCourse2State extends State<MyCourse2> {
           });
         },
       ),
-      tileColor: selectedAnswer == value ? const Color.fromARGB(255, 235, 232, 232) : null,
+      tileColor: isSelected ? const Color.fromARGB(255, 235, 232, 232) : null,
       selectedTileColor: Colors.black,
     );
   }
