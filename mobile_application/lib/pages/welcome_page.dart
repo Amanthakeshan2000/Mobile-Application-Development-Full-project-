@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'signup_page.dart';
+import 'onboarding.dart';
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class welcomePage1 extends StatelessWidget {
+  const welcomePage1({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: WelcomePage(),
     );
   }
@@ -22,11 +23,11 @@ class WelcomePage extends StatelessWidget {
 
     // Function to navigate to the sign-up page after a delay
     Future<void> navigateToSignUpPage() async {
-      await Future.delayed(const Duration(seconds: 5)); // Wait for 20 seconds
+      await Future.delayed(const Duration(seconds: 3)); // Wait for 20 seconds
       // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const SignUpPage()),
+        MaterialPageRoute(builder: (context) => onboarding()),
       );
     }
 

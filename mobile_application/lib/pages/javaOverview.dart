@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_application/pages/home_page_bar.dart';
+import 'package:mobile_application/pages/javaLesson.dart';
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class javaOverview extends StatelessWidget {
+  const javaOverview({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,10 @@ class MainApp extends StatelessWidget {
                                   icon: Icon(Icons.arrow_back_ios),
                                   color: Color.fromRGBO(0, 0, 0, 1),
                                   iconSize: 22.0,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context, MaterialPageRoute(builder: (context) => MyHomePage()));
+                                  },
                                 ),
                                 SizedBox(
                                   width: 10,
@@ -64,7 +69,7 @@ class MainApp extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
 
-                                Center(child: Image.asset('Assets/java1.png', scale: 1)),
+                                Center(child: Image.asset('assets/java1.png', scale: 1)),
 
                               ],
                             ),
@@ -199,12 +204,15 @@ class MainApp extends StatelessWidget {
                                 ),
                                 OutlinedButton(
                                   child: Text(
-                                    "Overview",
+                                    "Lessons",
                                     style: TextStyle(
                                       color: Colors.black,
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context, MaterialPageRoute(builder: (context) => MyCourse2()));
+                                  },
                                 ),
                                 OutlinedButton(
                                   child: Text(

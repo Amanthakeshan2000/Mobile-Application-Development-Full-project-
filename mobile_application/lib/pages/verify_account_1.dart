@@ -2,11 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mobile_application/pages/personal_details_1.dart';
 
 class veryfy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
       home: MyPage(),
     );
   }
@@ -27,7 +29,8 @@ class MyPage extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => personal()));
           },
         ),
         title: Text(

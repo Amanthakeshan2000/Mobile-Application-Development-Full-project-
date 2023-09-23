@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:mobile_application/pages/home_page_bar.dart';
+import 'package:mobile_application/pages/verify_account_1.dart';
 
 class personal extends StatelessWidget {
   @override
@@ -38,7 +40,8 @@ class _MyPageState extends State<MyPage> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MyHomePage()));
           },
         ),
         title: Text(
@@ -99,7 +102,7 @@ class _MyPageState extends State<MyPage> {
               height: 20,
               width: double.infinity,
               child: Text(
-                "skillupnsbm@nsbm.ac.lk",
+                "user@nsbm.ac.lk",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
@@ -163,12 +166,41 @@ class _MyPageState extends State<MyPage> {
                     ),
                   ),
                   SizedBox(height: 5),
+
+                  Container(
+                    alignment: Alignment.topLeft,
+                    width: MediaQuery.of(context).size.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+
+                        Center(
+                          child: OutlinedButton(
+                            child: Text(
+                              "   Verify Account   ",
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context, MaterialPageRoute(builder: (context) => veryfy()));
+
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ),
       ),
+
+
+
       bottomNavigationBar: Container(
         padding: EdgeInsets.all(16),
         child: SizedBox(

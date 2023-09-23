@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:mobile_application/pages/congradulation.dart';
+// import 'package:mobile_application/pages/Congratulations.dart';
 class MyCourse2 extends StatefulWidget {
   const MyCourse2({Key? key}) : super(key: key);
 
@@ -55,7 +56,7 @@ class _MyCourse2State extends State<MyCourse2> {
             const Padding(
               padding: EdgeInsets.all(16.0),
               child: Text(
-                'Lesson 3 | Quiz',
+                'Lesson 1 | Quiz',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16.0,
@@ -152,7 +153,8 @@ class _MyCourse2State extends State<MyCourse2> {
                   margin: const EdgeInsets.only(left: 5.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      // Handle the logic for getting the certificate here
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => Congratulations()));
                     },
                     style: ElevatedButton.styleFrom(
                       primary: Color.fromARGB(
@@ -162,7 +164,7 @@ class _MyCourse2State extends State<MyCourse2> {
                     ),
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Text("Next",
+                      child: Text("Get Certificate",
                           style: TextStyle(fontSize: 16.0)),
                     ),
                   ),

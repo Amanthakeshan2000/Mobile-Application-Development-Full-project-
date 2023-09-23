@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class ai extends StatelessWidget {
+  const ai({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class MainApp extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Center(
-                                child: Image.asset('Assets/aiImage.png',
+                                child: Image.asset('assets/aiImage.png',
                                     scale: 0.95)),
                           ],
                         ),

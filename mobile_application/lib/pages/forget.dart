@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class foget extends StatelessWidget {
+  const foget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: ForgotPasswordPage(),
     );
   }
@@ -88,7 +89,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Image.asset(
-                      "Assets/verify2.png"), // Replace with your image path
+                      "assets/verify2.png"), // Replace with your image path
                 ),
               ),
               const SizedBox(height: 16.0),
