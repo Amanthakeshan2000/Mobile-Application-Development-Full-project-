@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "128905694285",
+    "project_id": "skill-up-mobile-application",
+    "storage_bucket": "skill-up-mobile-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128905694285:android:94165b9220e3e35ccb2004",
+        "android_client_info": {
+          "package_name": "com.example.mobile_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP9tYi39ghYt49xN6AfcJ6fcXjpjT8grc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
